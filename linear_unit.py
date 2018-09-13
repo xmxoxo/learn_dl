@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
+# modify by xmxoxo for python 3.7 
+# 需要 matplotlib 来画图，
+# 没有安装的同学安装： pip install matplotlib 
 
 from perceptron import Perceptron
 
@@ -43,11 +46,11 @@ def plot(linear_unit):
     input_vecs, labels = get_training_dataset()
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(map(lambda x: x[0], input_vecs), labels)
+    ax.scatter(list(map(lambda x: x[0], input_vecs)), labels)
     weights = linear_unit.weights
     bias = linear_unit.bias
     x = range(0,12,1)
-    y = map(lambda x:weights[0] * x + bias, x)
+    y = list(map(lambda x:weights[0] * x + bias, x))
     ax.plot(x, y)
     plt.show()
 
@@ -56,10 +59,10 @@ if __name__ == '__main__':
     '''训练线性单元'''
     linear_unit = train_linear_unit()
     # 打印训练获得的权重
-    print linear_unit
+    print (linear_unit)
     # 测试
-    print 'Work 3.4 years, monthly salary = %.2f' % linear_unit.predict([3.4])
-    print 'Work 15 years, monthly salary = %.2f' % linear_unit.predict([15])
-    print 'Work 1.5 years, monthly salary = %.2f' % linear_unit.predict([1.5])
-    print 'Work 6.3 years, monthly salary = %.2f' % linear_unit.predict([6.3])
+    print ('Work 3.4 years, monthly salary = %.2f' % linear_unit.predict([3.4]))
+    print ('Work 15 years, monthly salary = %.2f' % linear_unit.predict([15]))
+    print ('Work 1.5 years, monthly salary = %.2f' % linear_unit.predict([1.5]))
+    print ('Work 6.3 years, monthly salary = %.2f' % linear_unit.predict([6.3]))
     plot(linear_unit)
